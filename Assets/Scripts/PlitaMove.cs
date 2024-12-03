@@ -26,7 +26,6 @@ public class PlitaMove : MonoBehaviour
             Forcedirection.y = 6f;
             Forcedirection.x = Forcedirection.x > 0 ? Forcedirection.x + 1 : Forcedirection.x - 1;
             Forcedirection.x *= -3f;
-            //Forcedirection.x = Forcedirection.x > 0 ? -5f : 5f;
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Forcedirection;
         }
     }
