@@ -13,9 +13,12 @@ public class PlitaMove : MonoBehaviour
 
     void Update()
     {
-        Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouse.y = -4;
-        _tr.position = mouse;
+        if (Time.timeScale != 0)
+        {
+            Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mouse.y = -4;
+            _tr.position = mouse;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -23,8 +26,8 @@ public class PlitaMove : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerMove>())
         {
             Vector2 Forcedirection = transform.position - collision.gameObject.transform.position;
-            Forcedirection.y = 6f;
-            Forcedirection.x = Forcedirection.x > 0 ? Forcedirection.x + 1 : Forcedirection.x - 1;
+            Forcedirection.y = Forcedirection.y > 0? -6f : 6f;
+            Forcedirection.x = Forcedirection.x > 0 ? Forcedirection.x + 1.5f : Forcedirection.x - 1.5f;
             Forcedirection.x *= -3f;
             collision.gameObject.GetComponent<Rigidbody2D>().velocity = Forcedirection;
         }

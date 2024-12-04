@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Plitka : MonoBehaviour
 {
+    [SerializeField] private GameObject _destroyEfect;
+
     private void Awake()
     {
         GameObject manager = GameObject.FindGameObjectWithTag("UIManager");
@@ -13,8 +15,13 @@ public class Plitka : MonoBehaviour
         if (collision.gameObject.GetComponent<PlayerMove>())
         {
             GameObject manager = GameObject.FindGameObjectWithTag("UIManager");
+
             manager.GetComponent<UIManager>().Score += 1;
             manager.GetComponent<UIManager>().UpdateScore();
+
+            GameObject newEect = Instantiate(_destroyEfect,transform.position,Quaternion.identity);
+
+            Destroy(newEect,1.1f);
             Destroy(gameObject);
         }
     }
