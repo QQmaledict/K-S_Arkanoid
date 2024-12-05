@@ -1,12 +1,9 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [RequireComponent (typeof(Rigidbody2D))]
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField]private Rigidbody2D _rb;
-    [SerializeField]private GameObject _restartPanel;
-    [SerializeField]private GameObject _plita;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -17,8 +14,8 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.tag == "Respawn")
         {
-            _restartPanel.SetActive(true);
-            _plita.SetActive(false);
+            TestBalls.ballsCount -= 1;
+            Destroy(gameObject);
         }
     }
 

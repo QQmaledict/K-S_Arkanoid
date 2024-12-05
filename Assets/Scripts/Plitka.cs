@@ -3,6 +3,8 @@ using UnityEngine;
 public class Plitka : MonoBehaviour
 {
     [SerializeField] private GameObject _destroyEfect;
+    [SerializeField] private BonusAbs[] _bonus;
+
 
     private void Awake()
     {
@@ -20,6 +22,14 @@ public class Plitka : MonoBehaviour
             manager.GetComponent<UIManager>().UpdateScore();
 
             GameObject newEect = Instantiate(_destroyEfect,transform.position,Quaternion.identity);
+
+            int i = Random.Range(1,11);
+
+            if (i == 10)
+            {
+                int r = Random.Range(0, _bonus.Length);
+                _bonus[r].Process();
+            }
 
             Destroy(newEect,1.1f);
             Destroy(gameObject);
