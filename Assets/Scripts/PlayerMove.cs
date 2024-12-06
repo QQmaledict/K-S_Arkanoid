@@ -7,8 +7,6 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        Vector2 direction = new Vector2(4f,4f);
-        _rb.AddForce(direction,ForceMode2D.Impulse);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
