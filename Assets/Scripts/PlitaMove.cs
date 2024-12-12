@@ -13,11 +13,14 @@ public class PlitaMove : MonoBehaviour
 
     void Update()
     {
-        if (Time.timeScale != 0)
+        if (Time.timeScale != 0 )
         {
             Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mouse.y = -4;
-            _tr.position = mouse;
+            if (mouse.y < 2.5f)
+            {
+                mouse.y = -3;
+                _tr.position = mouse;
+            }
         }
     }
 

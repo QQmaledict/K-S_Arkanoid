@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class TestBalls : MonoBehaviour
 {
@@ -11,9 +12,7 @@ public class TestBalls : MonoBehaviour
     {
         ballsCount = 0;
         _panelLose.SetActive(false);
-
-        Vector2 direction = new Vector2(3f, 3f);
-        _startBall.AddForce(direction, ForceMode2D.Impulse);
+        StartCoroutine(start());
     }
 
     private void Update()
@@ -24,4 +23,11 @@ public class TestBalls : MonoBehaviour
             _panelLose.SetActive(true);
         }
     }
+
+    private IEnumerator start()
+    {
+        yield return new WaitForSeconds(1f);
+        Vector2 direction = new Vector2(3f, 3f);
+        _startBall.AddForce(direction, ForceMode2D.Impulse);
+    }  
 }

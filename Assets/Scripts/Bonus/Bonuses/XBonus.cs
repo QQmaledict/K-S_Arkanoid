@@ -9,7 +9,7 @@ public class XBonus : BonusAbs
         int x = Random.Range(0,2);
         x = x == 0 ? -3 : 3;
         int y = Random.Range(0,2);
-        x = x == 0 ? -3 : 3;
+        y = y == 0 ? -3 : 3;
         TestBalls.ballsCount += 1;
         rb.AddForce(new Vector2(x,y),ForceMode2D.Impulse);
     }
